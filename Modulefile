@@ -9,15 +9,15 @@ project_page 'https://github.com/TracyWebTech/puppet-appdeploy'
 
 ## Add dependencies, if any:
 
-'puppetlabs/mysql', '>= 2.2.3'
-'puppetlabs/stdlib', '>= 4.1.0'
-'puppetlabs/postgresql', '>= 3.3.3'
+dependency 'puppetlabs/mysql', '>= 2.2.3'
+dependency 'puppetlabs/stdlib', '>= 4.1.0'
+dependency 'puppetlabs/postgresql', '>= 3.3.3'
 
-'arioch/redis', '>= 0.0.7'
-'jfryman/nginx', '>= 0.0.7'
-'saz/memcached', '>= 2.4.0'
+dependency 'arioch/redis', '>= 0.0.7'
+dependency 'jfryman/nginx', '>= 0.0.7'
+dependency 'saz/memcached', '>= 2.4.0'
 
-'tracywebtech/pip', '>= 1.1.0'
-'tracywebtech/openssl', '>= 0.1.0'
-'tracywebtech/supervisor', '>= 1.1.1'
+dependency 'tracywebtech/pip', '>= 1.1.0'
+dependency 'tracywebtech/openssl', '>= 0.1.0'
+dependency 'tracywebtech/supervisor', '>= 1.1.1'
 
