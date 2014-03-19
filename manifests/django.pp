@@ -1,7 +1,7 @@
 
 define appdeploy::django (
   $user,
-  $port = 8000,
+  $port = 8001,
   $environment = undef,
   $celery = false,
   $proxy = true,

@@ -3,7 +3,7 @@ define appdeploy::proxy (
   $user,
   $hosts,
   $upstream_ip = '127.0.0.1',
-  $upstream_port = 8000,
+  $upstream_port = 8001,
 ) {
 
   include nginx
