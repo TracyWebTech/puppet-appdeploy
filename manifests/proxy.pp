@@ -4,8 +4,6 @@ define appdeploy::proxy (
   $hosts,
   $upstream_ip = '127.0.0.1',
   $upstream_port = 8000,
-  $ssl_cert = undef,
-  $ssl_key = undef,
 ) {
 
   include nginx
@@ -57,5 +55,6 @@ define appdeploy::proxy (
     ssl_cert    => "/etc/nginx/ssl/$title/$title.crt",
     ssl_key     => "/etc/nginx/ssl/$title/$title.key",
     server_name => $hosts,
+    require     => Openssl::Certificate["/etc/nginx/ssl/$title/$title.crt"],
   }
 }
