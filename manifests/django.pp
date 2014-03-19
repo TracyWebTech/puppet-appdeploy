@@ -25,7 +25,7 @@ define appdeploy::django (
   $manage_path = "$virtualenv_path/bin/python manage.py"
 
   supervisor::app { $title:
-    command => "$virtualenv_path/bin/gunicorn $title.wsgi:appdeploy",
+    command => "$virtualenv_path/bin/gunicorn $title.wsgi:application",
   }
 
   if $celery {
