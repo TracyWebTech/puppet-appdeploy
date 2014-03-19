@@ -1,6 +1,7 @@
 
 define appdeploy::django (
   $user,
+  $ip = '127.0.0.1',
   $port = 8001,
   $environment = undef,
   $celery = false,
@@ -25,7 +26,7 @@ define appdeploy::django (
   $manage_path = "$virtualenv_path/bin/python manage.py"
 
   supervisor::app { $title:
-    command => "$virtualenv_path/bin/gunicorn $title.wsgi:application",
+    command => "$virtualenv_path/bin/gunicorn $title.wsgi:application -b $ip:$port",
   }
 
   if $celery {
@@ -50,7 +51,7 @@ define appdeploy::django (
     appdeploy::proxy { $title:
       user          => $user,
       hosts         => $proxy_hosts,
-      upstream_ip   => '127.0.0.1',
+      upstream_ip   => $ip,
       upstream_port => $port,
     }
   }
