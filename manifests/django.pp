@@ -30,20 +30,12 @@ define appdeploy::django (
   }
 
   if $celery {
-    supervisor::app { 'celeryd':
-      command => "$manage_path celeryd -E",
+    supervisor::app { 'celery-worker':
+      command => "$virtualenv_path/bin/celery worker --events --app=$title",
     }
 
-    supervisor::app { 'celerybeat':
-      command => "$manage_path celerybeat",
-    }
-
-    supervisor::app { 'celerycam':
-      command => "$manage_path celerycam",
-    }
-
-    supervisor::app { 'celeryflower':
-      command => "$manage_path celery flower --address=0.0.0.0",
+    supervisor::app { 'celery-beat':
+      command => "$virtualenv_path/bin/celery beat --app=$title",
     }
   }
 
