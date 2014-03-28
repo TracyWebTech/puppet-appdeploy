@@ -4,6 +4,7 @@ define appdeploy::proxy (
   $hosts,
   $upstream_ip = '127.0.0.1',
   $upstream_port = 8001,
+  $websocket = undef,
 ) {
 
   include nginx
@@ -28,7 +29,29 @@ define appdeploy::proxy (
     ensure => present,
     vhost  => $title,
     proxy  => "http://$title",
-    ssl    => true,
+    ssl    => true
+  }
+
+
+  if $websocket {
+    nginx::resource::upstream { "$title-websocket":
+      ensure  => present,
+      members => ["$websocket"],
+    }
+
+    nginx::resource::location { "@$title-app-websocket":
+      ensure   => present,
+      vhost    => $title,
+      proxy    => "http://$title-websocket",
+      location => '/ws',
+      location_custom_cfg_append => {
+        proxy_http_version => "1.1",
+        proxy_set_header   => {
+          'Upgrade'    => '$http_upgrade',
+          'Connection' => '"upgrade"',
+        },
+      }
+    }
   }
 
   ensure_resource('file', ['/etc/nginx/ssl', "/etc/nginx/ssl/$title"], {
