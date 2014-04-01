@@ -7,6 +7,7 @@ define appdeploy::django (
   $celery = false,
   $proxy = true,
   $proxy_hosts = [],
+  $directory = "/home/$user/$title/src",
   $websocket = undef,
 ) {
   include supervisor
@@ -18,7 +19,7 @@ define appdeploy::django (
   include appdeploy::deps::essential
 
   Supervisor::App {
-    directory   => "/home/$user/$title/src",
+    directory   => $directory,
     user        => $user,
     environment => $environment,
   }
