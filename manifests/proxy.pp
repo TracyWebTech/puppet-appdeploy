@@ -32,6 +32,16 @@ define appdeploy::proxy (
     ssl    => true
   }
 
+  nginx::resource::location { "private-media":
+    ensure         => present,
+    vhost          => $title,
+    location       => '/media/private',
+    location_alias => "/usr/share/nginx/$user/media/private/",
+    location_custom_cfg_append => {
+      add_header => "cache-control no-cache",
+      internal   => "",
+    },
+  }
 
   if $websocket {
     nginx::resource::upstream { "$title-websocket":
