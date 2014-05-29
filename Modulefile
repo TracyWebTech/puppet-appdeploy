@@ -10,7 +10,7 @@ project_page 'https://github.com/TracyWebTech/puppet-appdeploy'
 ## Add dependencies, if any:
 
 dependency 'puppetlabs/apt', '>= 1.0.0'
-dependency 'puppetlabs/concat', '>= 1.0.0'
+dependency 'puppetlabs/concat', '>= 1.1.0'
 dependency 'puppetlabs/stdlib', '>= 4.1.0'
 
 dependency 'jfryman/nginx', '>= 0.0.9'
