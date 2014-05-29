@@ -34,6 +34,7 @@ define appdeploy::proxy (
   nginx::resource::location { "private-media":
     ensure         => present,
     vhost          => $title,
+    ssl            => true,
     location       => '/media/private',
     location_alias => "/usr/share/nginx/$user/media/private/",
     location_custom_cfg_append => {
