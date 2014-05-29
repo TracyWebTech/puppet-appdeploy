@@ -1,5 +1,5 @@
 
-define appdeploy:wsproxy (
+define appdeploy::wsproxy (
   $vhost,
   $upstream_ip = '127.0.0.1',
   $upstream_port = '8080',
