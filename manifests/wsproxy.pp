@@ -1,6 +1,7 @@
 
 define appdeploy::wsproxy (
   $vhost,
+  $location='/websocket',
   $upstream_ip = '127.0.0.1',
   $upstream_port = '8080',
 ){
@@ -13,7 +14,7 @@ define appdeploy::wsproxy (
     ensure   => present,
     vhost    => $vhost,
     proxy    => "http://$title-websocket",
-    location => '/ws',
+    location => $location,
     location_custom_cfg_append => {
       proxy_http_version => "1.1",
       proxy_set_header   => {
