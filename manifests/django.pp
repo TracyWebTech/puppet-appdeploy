@@ -8,7 +8,6 @@ define appdeploy::django (
   $proxy = true,
   $proxy_hosts = [],
   $directory = "/home/$user/$title/src",
-  $websocket = undef,
 ) {
   include supervisor
 
@@ -47,7 +46,6 @@ define appdeploy::django (
       hosts         => $proxy_hosts,
       upstream_ip   => $ip,
       upstream_port => $port,
-      websocket     => $websocket,
     }
   }
 }
