@@ -49,7 +49,7 @@ define appdeploy::django (
       upstream_ip       => $ip,
       upstream_port     => $port,
       websocket         => $websocket,
-      vhost_cfg_append        => $vhost_cfg_append,
+      vhost_cfg_append  => $vhost_cfg_append,
     }
   }
 }
