@@ -4,6 +4,7 @@ define appdeploy::proxy (
   $hosts,
   $upstream_ip = '127.0.0.1',
   $upstream_port = 8001,
+  $vhost_cfg_append = undef,
 ) {
 
   include nginx
@@ -59,14 +60,15 @@ define appdeploy::proxy (
   }
 
   nginx::resource::vhost { $title:
-    ensure      => present,
-    www_root    => "/usr/share/nginx/$user",
-    index_files => [],
-    try_files   => ['$uri', "@$title-app"],
-    ssl         => true,
-    ssl_cert    => "/etc/nginx/ssl/$title/$title.crt",
-    ssl_key     => "/etc/nginx/ssl/$title/$title.key",
-    server_name => $hosts,
-    require     => Openssl::Certificate["/etc/nginx/ssl/$title/$title.crt"],
+    ensure           => present,
+    www_root         => "/usr/share/nginx/$user",
+    index_files      => [],
+    try_files        => ['$uri', "@$title-app"],
+    ssl              => true,
+    ssl_cert         => "/etc/nginx/ssl/$title/$title.crt",
+    ssl_key          => "/etc/nginx/ssl/$title/$title.key",
+    server_name      => $hosts,
+    require          => Openssl::Certificate["/etc/nginx/ssl/$title/$title.crt"],
+    vhost_cfg_append => $vhost_cfg_append,
   }
 }

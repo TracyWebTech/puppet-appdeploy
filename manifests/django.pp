@@ -8,6 +8,7 @@ define appdeploy::django (
   $proxy = true,
   $proxy_hosts = [],
   $directory = "/home/$user/$title/src",
+  $vhost_cfg_append = undef,
 ) {
   include supervisor
 
@@ -42,10 +43,11 @@ define appdeploy::django (
 
   if $proxy {
     appdeploy::proxy { $title:
-      user          => $user,
-      hosts         => $proxy_hosts,
-      upstream_ip   => $ip,
-      upstream_port => $port,
+      user              => $user,
+      hosts             => $proxy_hosts,
+      upstream_ip       => $ip,
+      upstream_port     => $port,
+      vhost_cfg_append  => $vhost_cfg_append,
     }
   }
 }
