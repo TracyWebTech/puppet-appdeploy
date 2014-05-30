@@ -4,7 +4,6 @@ define appdeploy::proxy (
   $hosts,
   $upstream_ip = '127.0.0.1',
   $upstream_port = 8001,
-  $websocket = undef,
   $vhost_cfg_append = undef,
 ) {
 
