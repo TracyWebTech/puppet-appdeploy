@@ -33,26 +33,16 @@ define appdeploy::proxy (
     ssl    => true
   }
 
-
-  if $websocket {
-    nginx::resource::upstream { "$title-websocket":
-      ensure  => present,
-      members => ["$websocket"],
-    }
-
-    nginx::resource::location { "@$title-app-websocket":
-      ensure   => present,
-      vhost    => $title,
-      proxy    => "http://$title-websocket",
-      location => '/ws',
-      location_custom_cfg_append => {
-        proxy_http_version => "1.1",
-        proxy_set_header   => {
-          'Upgrade'    => '$http_upgrade',
-          'Connection' => '"upgrade"',
-        },
-      }
-    }
+  nginx::resource::location { "private-media":
+    ensure         => present,
+    vhost          => $title,
+    ssl            => true,
+    location       => '/media/private',
+    location_alias => "/usr/share/nginx/$user/media/private/",
+    location_custom_cfg_append => {
+      add_header => "cache-control no-cache",
+      internal   => "",
+    },
   }
 
   ensure_resource('file', ['/etc/nginx/ssl', "/etc/nginx/ssl/$title"], {

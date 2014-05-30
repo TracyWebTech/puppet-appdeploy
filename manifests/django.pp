@@ -44,12 +44,19 @@ define appdeploy::django (
 
   if $proxy {
     appdeploy::proxy { $title:
+<<<<<<< HEAD
       user              => $user,
       hosts             => $proxy_hosts,
       upstream_ip       => $ip,
       upstream_port     => $port,
       websocket         => $websocket,
       vhost_cfg_append  => $vhost_cfg_append,
+=======
+      user          => $user,
+      hosts         => $proxy_hosts,
+      upstream_ip   => $ip,
+      upstream_port => $port,
+>>>>>>> upstream/master
     }
   }
 }
