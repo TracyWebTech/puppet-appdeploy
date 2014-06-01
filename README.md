@@ -42,14 +42,6 @@ Currently supporting:
 * appdeploy::deps::scrapy: dependecies for 'scrapy'
 
 
-### appdeploy::deps::postgresql
-
-Installs development libraries and headers to allow compilation of PostgreSQL libraries. 
-
-### appdeploy::deps::mysql
-
-Installs development libraries and headers to allow compilation of MySQL libraries. 
-
 ## Contact
 
 Please log tickets and issues at our [Projects site](http://projects.example.com)
