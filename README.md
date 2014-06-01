@@ -42,11 +42,6 @@ Currently supporting:
 * appdeploy::deps::scrapy: dependecies for 'scrapy'
 
 
-## Contact
-
-Please log tickets and issues at our [Projects site](http://projects.example.com)
-
-
 ## Releases
 
 Releases are published on [Puppet Forge](https://forge.puppetlabs.com/tracywebtech/appdeploy)
