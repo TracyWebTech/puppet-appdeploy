@@ -38,8 +38,8 @@ Currently supporting:
 
 * appdeploy::deps::postgresql: dependecies for `psycopg2`
 * appdeploy::deps::mysql: dependecies for `MySQL-python`
-* appdeploy::deps::lxml: dependecies for 'lxml'
-* appdeploy::deps::scrapy: dependecies for 'scrapy'
+* appdeploy::deps::lxml: dependecies for `lxml`
+* appdeploy::deps::scrapy: dependecies for `scrapy`
 
 
 ## Releases
