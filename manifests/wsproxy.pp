@@ -20,6 +20,7 @@ define appdeploy::wsproxy (
       proxy_set_header   => {
         'Upgrade'    => '$http_upgrade',
         'Connection' => '"upgrade"',
+        'X-Forwarded-For' => '$proxy_add_x_forwarded_for',
       },
     }
   }
