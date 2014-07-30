@@ -1,4 +1,11 @@
 
 class appdeploy::deps::mysql {
-  ensure_packages(['libmysqlclient-dev'])
+  case $osfamily {
+    'RedHat': {
+      ensure_packages(['mysql-devel'])
+    }
+    'Debian': {
+      ensure_packages(['libmysqlclient-dev'])
+    }
+  }
 }
