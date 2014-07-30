@@ -1,10 +1,7 @@
 
 class appdeploy::deps::gevent {
-
-  case $operatingsystem {
-    'RedHat', 'CentOS': { $libev_dev = 'libev-dev' }
-    /^(Debian|Ubuntu)$/:{ $libev_dev = 'libev-devel' }
+  case $osfamily {
+    'RedHat': { ensure_packages(['libev-devel']) }
+    'Debian': { ensure_packages(['libev-dev']) }
   }
-  ensure_packages([$libev_dev])
-
 }
