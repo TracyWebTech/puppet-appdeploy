@@ -1,4 +1,7 @@
 
 class appdeploy::deps::postgresql {
-  ensure_packages(['libpq-dev'])
+  case $osfamily {
+    'Debian': { ensure_packages(['libpq-dev']) }
+    'RedHat': { ensure_packages(['postgresql-devel']) }
+  }
 }
