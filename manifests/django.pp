@@ -50,4 +50,11 @@ define appdeploy::django (
       vhost_cfg_append  => $vhost_cfg_append,
     }
   }
+
+  cron { 'clearsessions':
+    command => "$manage_path clearsessions",
+    hour    => '3',
+    minute  => '27',
+  }
+
 }
