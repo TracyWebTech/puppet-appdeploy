@@ -15,7 +15,8 @@ dependency 'puppetlabs/stdlib', '>= 4.1.0'
 
 dependency 'jfryman/nginx', '>= 0.0.9'
 
-dependency 'tracywebtech/pip', '>= 1.1.1'
+dependency 'tracywebtech/pip', '>= 1.2.0'
+dependency 'tracywebtech/puias', '>= 0.1.2'
 dependency 'tracywebtech/openssl', '>= 0.1.0'
 dependency 'tracywebtech/supervisor', '>= 1.1.1'
 
