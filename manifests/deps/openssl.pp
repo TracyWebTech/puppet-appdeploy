@@ -1,6 +1,6 @@
 class appdeploy::deps::openssl {
-  ensure_packages([
-    'libssl-dev',
-    'libffi-dev',
-  ])
+  case $osfamily {
+    'RedHat': { ensure_packages(['openssl-devel', 'libffi-devel']) }
+    'Debian': { ensure_packages(['libssl-dev', 'libffi-dev']) }
+  }
 }
