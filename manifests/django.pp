@@ -8,7 +8,7 @@ define appdeploy::django (
   $proxy = true,
   $proxy_hosts = [],
   $directory = "/home/$user/$title/src",
-  $gunicorn_cfg = "$directory/gunicorn.conf.py",
+  $gunicorn_cfg = "$directory/$title/gunicorn.conf.py",
   $vhost_cfg_append = undef,
 ) {
   include supervisor
