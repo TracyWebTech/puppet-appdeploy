@@ -8,12 +8,12 @@ define appdeploy::django (
   $proxy = true,
   $proxy_hosts = [],
   $directory = "/home/$user/$title/src",
+  $gunicorn_cfg = "$directory/gunicorn.conf.py",
   $vhost_cfg_append = undef,
 ) {
   include supervisor
 
   include appdeploy::deps::l10n
-  include appdeploy::deps::gevent
   include appdeploy::deps::python
   include appdeploy::deps::pillow
   include appdeploy::deps::essential
@@ -28,7 +28,7 @@ define appdeploy::django (
   $manage_path = "$virtualenv_path/bin/python manage.py"
 
   supervisor::app { $title:
-    command => "$virtualenv_path/bin/gunicorn $title.wsgi:application --bind=$ip:$port --worker-class=gevent --workers=3",
+    command => "$virtualenv_path/bin/gunicorn $title.wsgi:application --bind=$ip:$port --config=$gunicorn_cfg",
   }
 
   if $celery {
