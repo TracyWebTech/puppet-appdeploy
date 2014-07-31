@@ -1,6 +1,12 @@
 
 class appdeploy::deps::essential {
-  ensure_packages(['git', 'unzip'])
+
+  $git_pkg = $lsbdistcodename ? {
+    precise => 'git-core',
+    default => 'git',
+  }
+
+  ensure_packages([$git_pkg, 'unzip'])
 
   case $osfamily {
     'RedHat': {
