@@ -6,7 +6,7 @@ class appdeploy::deps::essential {
     default => 'git',
   }
 
-  ensure_packages([$git_pkg, 'unzip'])
+  ensure_packages([$git_pkg, 'unzip', 'mercurial', 'bzr'])
 
   case $osfamily {
     'RedHat': {
