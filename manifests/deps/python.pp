@@ -3,10 +3,7 @@ class appdeploy::deps::python {
   require pip
   require appdeploy::deps::pythoncore
 
-  package { 'virtualenvwrapper':
-    ensure   => installed,
-    provider => pip,
-  }
+  pip::install { 'virtualenvwrapper': }
 
   # virtualenvwrapper load
   case $osfamily {
