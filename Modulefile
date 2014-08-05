@@ -18,5 +18,5 @@ dependency 'jfryman/nginx', '>= 0.0.9'
 dependency 'tracywebtech/pip', '>= 1.3.0'
 dependency 'tracywebtech/puias', '>= 0.1.3'
 dependency 'tracywebtech/openssl', '>= 0.1.0'
-dependency 'tracywebtech/supervisor', '>= 1.1.4'
+dependency 'tracywebtech/supervisor', '>= 1.1.5'
 
