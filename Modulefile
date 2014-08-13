@@ -13,7 +13,7 @@ dependency 'puppetlabs/apt', '>= 1.0.0'
 dependency 'puppetlabs/concat', '>= 1.1.0'
 dependency 'puppetlabs/stdlib', '>= 4.1.0'
 
-dependency 'jfryman/nginx', '>= 0.0.9'
+dependency 'jfryman/nginx', '>= 0.0.10'
 
 dependency 'tracywebtech/pip', '>= 1.3.0'
 dependency 'tracywebtech/puias', '>= 0.1.3'
