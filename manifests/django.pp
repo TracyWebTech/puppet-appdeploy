@@ -25,7 +25,7 @@ define appdeploy::django (
   }
 
   $virtualenv_path = "/home/$user/.virtualenvs/$title"
-  $manage_path = "$virtualenv_path/bin/python manage.py"
+  $manage_path = "$virtualenv_path/bin/python ~/$title/src/manage.py"
 
   supervisor::app { $title:
     command => "$virtualenv_path/bin/gunicorn $title.wsgi:application --bind=$ip:$port --config=$gunicorn_cfg",
