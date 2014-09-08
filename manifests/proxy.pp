@@ -40,7 +40,7 @@ define appdeploy::proxy (
     location_alias => "/usr/share/nginx/$user/media/private/",
     location_custom_cfg_append => {
       add_header => "cache-control no-cache;",
-      internal   => "",
+      internal   => ";",
     },
   }
 
