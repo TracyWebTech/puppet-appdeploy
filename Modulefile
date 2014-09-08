@@ -1,5 +1,5 @@
 name    'tracywebtech-appdeploy'
-version '0.8.8'
+version '0.8.9'
 source 'https://github.com/TracyWebTech/puppet-appdeploy'
 author 'tracywebtech'
 license 'Apache License, Version 2.0'
