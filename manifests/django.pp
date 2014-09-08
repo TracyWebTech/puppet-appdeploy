@@ -51,10 +51,18 @@ define appdeploy::django (
     }
   }
 
+  cron { 'clearsessions-new':
+    command => "$manage_path clearsessions",
+    hour    => '3',
+    minute  => '27',
+    user    => $user,
+  }
+
   cron { 'clearsessions':
     command => "$manage_path clearsessions",
     hour    => '3',
     minute  => '27',
+    ensure  => absent,
   }
 
 }
