@@ -8,7 +8,7 @@ define appdeploy::django (
   $proxy = true,
   $proxy_hosts = [],
   $directory = "/home/$user/$title/src",
-  $gunicorn_cfg = "$directory/$title/gunicorn.conf.py",
+  $gunicorn_cfg = "$title/gunicorn.conf.py",
   $vhost_cfg_append = undef,
 ) {
   include supervisor
@@ -25,7 +25,7 @@ define appdeploy::django (
   }
 
   $virtualenv_path = "/home/$user/.virtualenvs/$title"
-  $manage_path = "$virtualenv_path/bin/python ~/$title/src/manage.py"
+  $manage_path = "$virtualenv_path/bin/python $directory/manage.py"
 
   supervisor::app { $title:
     command => "$virtualenv_path/bin/gunicorn $title.wsgi:application --bind=$ip:$port --config=$gunicorn_cfg",
