@@ -1,15 +1,16 @@
 # appdeploy
 
-## Overview 
+## Overview
 
 The appdeploy module helps Django deploys by:
 
 * Installing compilation dependecies
 * Setting up reverse proxy
 * Configuring supervisor to manage the application execution
+* Configuring gunicorn WSGI server
 * Allowing the user to set a websocket proxy
 
-## Defines 
+## Defines
 
 ### appdeploy::django
 
@@ -32,7 +33,7 @@ Parameters:
 
 ## Classes
 
-Installs development libraries and headers to allow compilation of specific libraries. 
+Installs development libraries and headers to allow compilation of specific libraries.
 
 Currently supporting:
 
