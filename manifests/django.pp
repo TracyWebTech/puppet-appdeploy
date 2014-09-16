@@ -40,7 +40,6 @@ define appdeploy::django (
 
   $default_gunicorn_cfg_path = "/etc/gunicorn-$title.conf.py"
 
-  $gunicorn_cfg_path = pick($gunicorn_cfg, '/etc/gunicorn-$title.conf.py')
   if $gunicorn_cfg {
     warning('Passing "gunicorn_cfg" to appdeploy::django is deprecated; please use the gunicorn parameter instead.')
     $gunicorn_cfg_path = $gunicorn_cfg
