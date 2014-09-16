@@ -1,0 +1,18 @@
+## DO NOT CHANGE MANUALLY!
+##  Puppet generated file
+
+import os
+
+<%- @gunicorn.each_pair do |key,value| -%>
+<%- if key == 'workers' && value == 'auto' -%>
+import multiprocessing
+workers = multiprocessing.cpu_count() * 2 + 1
+<%- elsif key == 'errorlog' -%>
+errorlog = os.path.expanduser('<%= value %>')
+if not os.path.exists(errorlog):
+    open(errorlog, 'a').close() # touch
+<%- elsif key == 'bind' && (@ip || @port) -%>
+<%- else -%>
+<%= key %> = '<%= value %>'
+<%- end %>
+<%- end -%>
