@@ -41,8 +41,8 @@ define appdeploy::django (
   $default_gunicorn_cfg_path = "/etc/gunicorn-${title}.conf.py"
 
   if $gunicorn_cfg {
-    warning('Passing "gunicorn_cfg" to appdeploy::django is ' \
-            'deprecated; please use the gunicorn parameter instead.')
+    warning('Passing "gunicorn_cfg" to appdeploy::django is  \
+            deprecated; please use the gunicorn parameter instead.')
     $gunicorn_cfg_path = $gunicorn_cfg
 
   } else {
@@ -57,15 +57,15 @@ define appdeploy::django (
 
   if $ip or $port {
     # IP and Port should be set using $gunicorn hash map
-    warning('Passing "ip" and/or "port" to appdeploy::django ' \
-            'is deprecated; please use gunicorn["bind"] parameter instead.')
+    warning('Passing "ip" and/or "port" to appdeploy::django \
+            is deprecated; please use gunicorn["bind"] parameter instead.')
     $port_ = pick($port, '8001')
     $ip_ = pick($ip, '127.0.0.1')
-    $app_cmd = "${virtualenv_path}/bin/gunicorn ${title}.wsgi:application " \
-                "--bind=${ip_}:${port_} --config=${gunicorn_cfg_path}"
+    $app_cmd = "${virtualenv_path}/bin/gunicorn ${title}.wsgi:application \
+                --bind=${ip_}:${port_} --config=${gunicorn_cfg_path}"
   } else {
-    $app_cmd = "${virtualenv_path}/bin/gunicorn ${title}.wsgi:application " \
-                "--config=${gunicorn_cfg_path}"
+    $app_cmd = "${virtualenv_path}/bin/gunicorn ${title}.wsgi:application \
+                --config=${gunicorn_cfg_path}"
   }
 
   supervisor::app { $title:
