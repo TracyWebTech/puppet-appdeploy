@@ -35,4 +35,13 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class appdeploy {}
+class appdeploy {
+  case $::osfamily {
+    'Debian': {
+      Package {
+        require => Exec['apt_update'],
+      }
+    }
+    default: {}
+  }
+}
