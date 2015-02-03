@@ -1,6 +1,6 @@
 
 class appdeploy::deps::lxml {
-  case $osfamily {
+  case $::osfamily {
 
     'Redhat': {
       ensure_packages(['libxml2-devel', 'libxslt-devel'])

@@ -6,7 +6,7 @@ class appdeploy::deps::python {
   pip::install { 'virtualenvwrapper': }
 
   # virtualenvwrapper load
-  case $osfamily {
+  case $::osfamily {
     'RedHat': {
       file { '/etc/profile.d/virtualenvwrapper.sh':
         ensure => file,

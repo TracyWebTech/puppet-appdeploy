@@ -1,6 +1,6 @@
 
 class appdeploy::deps::mysql {
-  case $osfamily {
+  case $::osfamily {
     'RedHat': {
       ensure_packages(['mysql-devel'])
     }
